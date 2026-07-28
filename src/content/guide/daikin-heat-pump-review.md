@@ -6,6 +6,20 @@ publishedAt: 2026-05-22
 modifiedAt: 2026-07-19
 schemaType: 'Review'
 brand: 'Daikin'
+model: 'Aurora / Altherma 3 / Fit'
+rating: 4.4
+pros:
+  - 'Aurora line now matches Mitsubishi on cold-climate specs at 3 to 5 percent lower installed cost'
+  - 'Daikin One+ smart thermostat is best-in-class for native compressor-stage control'
+  - 'Altherma 3 is the strongest air-to-water option for hydronic retrofits'
+  - 'Global parts network, no corporate-restructuring supply risk'
+cons:
+  - 'Comfort Pro dealer network is thinner than Mitsubishi Diamond in northern New England'
+  - 'Aurora COP at -8C runs 2 to 5 percent behind Mitsubishi MUZ-FS on raw specs'
+  - 'Documentation less granular than Mitsubishi for field-service technicians'
+outbound:
+  - { label: 'Daikin Aurora product page', url: 'https://www.daikin.com/residential/heatpump/aurora' }
+  - { label: 'AHRI directory (verify model pairing)', url: 'https://www.ahridirectory.org/' }
 faqs:
   - q: 'Is Daikin Aurora cold climate certified?'
     a: 'Yes. Aurora (AURORA-M family) publishes COP at -8C around 1.95 and capacity at -15C at 70 percent of nameplate. Demand defrost is standard. Twelve-year warranty when installed by a Daikin Comfort Pro and registered online.'
@@ -15,7 +29,7 @@ faqs:
     a: 'No. Liebherr is a separate company with its own residential product lines. Daikin owns American Brands such as American Standard and Bryant Private Label products under the Daikin umbrella.'
 ---
 
-Daikin is the HVAC giant, biggest by revenue globally. Cold-climate spec quality has caught up to Mitsubishi's in the last three winters. The Aurora line is now a fully matured alternative to MUZ-FS at 3 to 5 percent under on installed cost in most metros.
+Daikin is the HVAC giant, biggest by revenue globally. Cold-climate spec quality has caught up to Mitsubishi's in the last three winters. The Aurora line is now a fully matured alternative to MUZ-FS at 3 to 5 percent under on installed cost in most metros. If you want the comparison read side by side, the [Mitsubishi heat pump review](/guide/mitsubishi-heat-pump-review/) is the natural pair; the [best heat pumps for 2026](/guide/best-heat-pumps-2026/) guide summarizes where each sits in the field.
 
 This review pulls together Aurora, Altherma, and Daikin's broader residential Fit line.
 
@@ -72,4 +86,4 @@ In cold climates where the local service network is excellent, Aurora wins as th
 - Altherma 3 R32, integrated cylinder, 3-bedroom retrofit (UK or Canadian equivalent): $25,000 to $35,000
 - Fit 12k single-zone, moderate climate: $3,200 to $4,300 installed
 
-After federal credit and most state rebates, net Aurora cold-climate 3-ton multi-zone lands $11,000 to $14,500. That is roughly equivalent to net Mitsubishi pricing in the same configuration. The Aurora decision is more about installer quality than savings.
+After federal credit and most state rebates, net Aurora cold-climate 3-ton multi-zone lands $11,000 to $14,500. That is roughly equivalent to net Mitsubishi pricing in the same configuration. The Aurora decision is more about installer quality than savings. For the state-by-state net numbers, see [heat pump cost by state](/guide/heat-pump-cost-by-state/); for the rebate stack that drops the net further, [heat pump tax credits and rebates](/guide/heat-pump-tax-credit-rebates/) lays out the programs.

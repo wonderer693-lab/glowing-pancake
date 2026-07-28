@@ -6,6 +6,20 @@ publishedAt: 2026-05-12
 modifiedAt: 2026-07-18
 schemaType: 'Review'
 brand: 'Mitsubishi'
+model: 'MUZ-FS / Zuba / MSZ-GS'
+rating: 4.7
+pros:
+  - 'Mature cold-climate hardware with 10+ years of Canadian field data'
+  - 'Best-in-market indoor head diffuser and low 18 dB fan operation'
+  - 'Dense Diamond Contractor service network in cold North America'
+  - 'Warranty honored (slow but paid), 12-year compressor stretch available'
+cons:
+  - 'Most expensive cold-climate option: 15 to 25 percent over Daikin / Bosch'
+  - 'MyMitsubishi portal is a generation behind Daikin One+'
+  - 'HyperHeat badge marketing creates model-number confusion with SUZ-KA'
+outbound:
+  - { label: 'Mitsubishi Zuba product spec sheet (PDF)', url: 'https://www.mitsubishielectric.com/en.ca/hvac/product/686' }
+  - { label: 'AHRI directory (verify model pairing)', url: 'https://www.ahridirectory.org/' }
 faqs:
   - q: 'Are Mitsubishi Zuba and MUZ-FS the same?'
     a: 'Zuba is the Canadian name for the MUZ-FS family. The same unit ships under both labels. Specs are identical. warrantied identical. Choose what is locally available.'
@@ -17,7 +31,7 @@ faqs:
 
 Mitsubishi is the brand HVAC installers in cold North America recommend when you ask them what they would put in their own house. The reputation is earned, with two qualifiers I will get into below.
 
-This review is based on two installs I have visited, three installs I have specced for friends in 2025 and 2026, and four years of forum field reports across r/heatpumps, r/HVAC, and the Green Building Advisor forums.
+This review is based on two installs I have visited, three installs I have specced for friends in 2025 and 2026, and four years of forum field reports across r/heatpumps, r/HVAC, and the Green Building Advisor forums. If you are still figuring out whether a heat pump makes sense for your house at all, [how a heat pump works](/guide/how-heat-pumps-work/) is the primer. If you are price-shopping across brands, [best heat pumps for 2026](/guide/best-heat-pumps-2026/) is the comparative list.
 
 ## What Mitsubishi gets right
 
@@ -41,7 +55,7 @@ Spec sheet eccentricities. The HyperHeat badge covers cold-climate units, but Mi
 
 ## SUZ-KA versus MUZ-FS
 
-If you buy a single-zone Mitsubishi heat pump for a room and pay $4,200 installed, the model number on the outdoor unit tells you what you got.
+If you buy a single-zone Mitsubishi heat pump for a room and pay $4,200 installed, the model number on the outdoor unit tells you what you got. The spec-sheet decoding also works the same way for [Daikin](/guide/daikin-heat-pump-review/) and [LG](/guide/lg-heat-pump-review/) units, both of which ship cold-climate and mild-climate variants under confusingly similar names.
 
 | Model | Cold-climate qualified | Use case |
 |---|---|---|
@@ -59,7 +73,7 @@ If the quote is labeled "Mitsubishi Hyper Heat" but the model number starts with
 - 3-ton multi-zone Hyper Heat, three indoor heads, cold climate: $14,000 to $18,500
 - Zuba-Central 3-ton ducted split with electric backup, cold climate: $17,500 to $22,500
 
-After federal $2k credit and typical state rebates of $1.5 to $2.5k, net is around $1,300 to $3,500 less for whole-house installs.
+After federal $2k credit and typical state rebates of $1.5 to $2.5k, net is around $1,300 to $3,500 less for whole-house installs. For the full rebate stack by state, see [heat pump tax credits and rebates](/guide/heat-pump-tax-credit-rebates/), and for installed-cost ranges broken down by state, [heat pump cost by state](/guide/heat-pump-cost-by-state/).
 
 ## Long-term verdict
 
@@ -67,4 +81,4 @@ The Mitsubishi MUZ-FS family is the safest cold-climate heat pump install of 202
 
 Pay the brand premium if you want to stop thinking about it. Save $2 to $4k with a Daikin Aurora or Bosch IDS 2.0 if the savings matter more to you than the brand's quiet longevity. Slip to Moovair for the same compressor in cheaper Canadian packaging.
 
-Treat the warranty's 12-year stretch as a goal, not a guarantee. Heat pumps need maintenance every year. The Mitsubishi computer will catch any leak that pushes a refrigerant threshold. The Mitsubishi tech who catches it depends on your wallet and your area's Diamond dealer calendar. Buy a good brand and own the maintenance habit. That is the actual longevity play.
+Treat the warranty's 12-year stretch as a goal, not a guarantee. Heat pumps need maintenance every year. The Mitsubishi computer will catch any leak that pushes a refrigerant threshold. The Mitsubishi tech who catches it depends on your wallet and your area's Diamond dealer calendar. Buy a good brand and own the maintenance habit. That is the actual longevity play. The annual schedule is laid out in the [heat pump maintenance checklist](/guide/heat-pump-maintenance-checklist/).

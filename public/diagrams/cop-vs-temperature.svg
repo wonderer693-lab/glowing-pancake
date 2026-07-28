@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="cop-title cop-desc">
+  <title id="cop-title">Heat pump COP vs outdoor temperature</title>
+  <desc id="cop-desc">Line chart showing coefficient of performance dropping as outdoor temperature falls for three example units: a cold-climate Mitsubishi MUZ-FS, a moderate Daikin Aurora, and a budget single-zone unit.</desc>
+  <style>
+    .axis { stroke: #1a1a1a; stroke-width: 1; fill: none; }
+    .grid { stroke: #e6e1d8; stroke-width: 1; fill: none; }
+    .label { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 13px; fill: #4a4a4a; }
+    .axis-title { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 14px; font-weight: 600; fill: #1a1a1a; }
+    .line { fill: none; stroke-width: 2.2; }
+    .cold { stroke: #b6431f; }
+    .moderate { stroke: #9a6700; }
+    .budget { stroke: #6f6f6f; stroke-dasharray: 4 3; }
+    .dot { r: 3.5; }
+  </style>
+
+  <rect width="720" height="420" fill="#fbfaf7" />
+
+  <text x="360" y="30" class="axis-title" text-anchor="middle">COP falls as outdoor temperature drops</text>
+
+  <!-- chart area: x 80..680, y 60..360 -->
+  <!-- gridlines -->
+  <line x1="80" y1="60"  x2="680" y2="60"  class="grid" />
+  <line x1="80" y1="135" x2="680" y2="135" class="grid" />
+  <line x1="80" y1="210" x2="680" y2="210" class="grid" />
+  <line x1="80" y1="285" x2="680" y2="285" class="grid" />
+
+  <!-- Y axis: 0..5 COP -->
+  <line x1="80" y1="60" x2="80" y2="360" class="axis" />
+  <text x="72" y="64"  class="label" text-anchor="end">5</text>
+  <text x="72" y="139" class="label" text-anchor="end">4</text>
+  <text x="72" y="214" class="label" text-anchor="end">3</text>
+  <text x="72" y="289" class="label" text-anchor="end">2</text>
+  <text x="72" y="364" class="label" text-anchor="end">1</text>
+  <text x="36" y="210" class="axis-title" transform="rotate(-90 36 210)" text-anchor="middle">COP</text>
+
+  <!-- X axis: -25..15 C, mapped 80..680 -->
+  <line x1="80" y1="360" x2="680" y2="360" class="axis" />
+  <text x="80"  y="380" class="label" text-anchor="middle">-25</text>
+  <text x="180" y="380" class="label" text-anchor="middle">-15</text>
+  <text x="280" y="380" class="label" text-anchor="middle">-5</text>
+  <text x="380" y="380" class="label" text-anchor="middle">5</text>
+  <text x="480" y="380" class="label" text-anchor="middle">15</text>
+  <text x="380" y="405" class="axis-title" text-anchor="middle">Outdoor temperature (C)</text>
+
+  <!-- Cold-climate MUZ-FS: COP 1.7 @ -25C, 2.2 @ -15, 3.0 @ -5, 3.8 @ 5, 4.3 @ 15 -->
+  <polyline class="line cold"
+    points="80,234 180,196 280,135 380,83 480,46"
+    fill="none" />
+  <circle class="dot" cx="80"  cy="234" fill="#b6431f" />
+  <circle class="dot" cx="180" cy="196" fill="#b6431f" />
+  <circle class="dot" cx="280" cy="135" fill="#b6431f" />
+  <circle class="dot" cx="380" cy="83"  fill="#b6431f" />
+  <circle class="dot" cx="480" cy="46"  fill="#b6431f" />
+  <text x="500" y="50" class="label" fill="#b6431f">Mitsubishi MUZ-FS (cold-climate)</text>
+
+  <!-- Moderate Daikin Aurora: COP 0 @ -25 (off), 1.7 @ -15, 2.4 @ -5, 3.2 @ 5, 3.8 @ 15 -->
+  <polyline class="line moderate"
+    points="180,234 280,180 380,121 480,83"
+    fill="none" />
+  <circle cx="180" cy="234" fill="#9a6700" class="dot" />
+  <circle cx="280" cy="180" fill="#9a6700" class="dot" />
+  <circle cx="380" cy="121" fill="#9a6700" class="dot" />
+  <circle cx="480" cy="83"  fill="#9a6700" class="dot" />
+  <text x="500" y="87" class="label" fill="#9a6700">Daikin Aurora (cold-climate)</text>
+
+  <!-- Budget single-zone: stops at -8C, COP 1.4 @ -5, 2.5 @ 5, 3.2 @ 15 -->
+  <polyline class="line budget"
+    points="280,255 380,172 480,121"
+    fill="none" />
+  <circle cx="280" cy="255" fill="#6f6f6f" class="dot" />
+  <circle cx="380" cy="172" fill="#6f6f6f" class="dot" />
+  <circle cx="480" cy="121" fill="#6f6f6f" class="dot" />
+  <text x="500" y="125" class="label" fill="#6f6f6f">Budget single-zone (stops at -8C)</text>
+
+  <text x="80" y="395" class="label" fill="#6f6f6f">Below COP 1, resistance heat is cheaper. Below COP ~2.2, gas is cheaper in most US rate regions.</text>
+</svg>

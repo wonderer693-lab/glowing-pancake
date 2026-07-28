@@ -5,6 +5,8 @@ hub: 'install'
 publishedAt: 2026-07-19
 modifiedAt: 2026-07-22
 schemaType: 'HowTo'
+image: '/diagrams/dual-fuel-switchover.svg'
+imageAlt: 'Diagram showing the operating cost of a heat pump and a gas furnace as outdoor temperature falls, with the switchover point around -7C where the furnace becomes cheaper to run'
 faqs:
   - q: 'What temperature should dual fuel switchover be set to?'
     a: 'Depends on your local gas-to-electric price ratio. Default around -7C outdoor in most US rate plans. Some northern US households drop to -12C if electric is cheap and gas is expensive; South households go higher to -3C if gas is cheap.'
@@ -15,6 +17,8 @@ faqs:
 ---
 
 Dual-fuel is the mixed-fuel option. A heat pump coil sits above the existing gas furnace in the same air handler. Both share the ductwork. The control board decides, based on outdoor temperature and indoor load, which side fires. Done right it saves money and emissions at the same time. Done wrong it costs more than either option alone.
+
+![Operating cost curves for heat pump and gas furnace showing switchover point around -7C](/diagrams/dual-fuel-switchover.svg)
 
 This guide walks through what matters.
 

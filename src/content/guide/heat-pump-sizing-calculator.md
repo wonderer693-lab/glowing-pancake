@@ -5,6 +5,12 @@ hub: 'install'
 publishedAt: 2026-07-18
 modifiedAt: 2026-07-19
 schemaType: 'HowTo'
+image: '/diagrams/sizing-sweet-spot.svg'
+imageAlt: 'Efficiency curve showing the seasonal COP of a heat pump versus installed capacity as a percentage of the Manual J design day load, with the sweet spot at 10 to 15 percent above design'
+outbound:
+  - { label: 'ACCA Manual J technical procedure (ACCA)', url: 'https://www.acca.org/standards/manual-j' }
+  - { label: 'ASHRAE climatic design data', url: 'https://www.ashrae.org/technical-resources/free-resources' }
+  - { label: 'NREL residential building energy tools', url: 'https://www.nrel.gov/buildings/' }
 faqs:
   - q: 'What is Manual J and why does it matter for heat pump sizing?'
     a: 'Manual J is the ACCA''s published procedure for residential heat loss calculations. It estimates BTU per hour of heat needed at design outdoor temperature based on envelope data. Used properly it gives the right heat pump size; without it you are guessing.'
@@ -14,7 +20,9 @@ faqs:
     a: 'On the design day, defined as the cold snap your region experiences every 99 percent of winter hours (the 99% heating design dry bulb temperature from ASHRAE). This is the outside temperature your unit must carry alone.'
 ---
 
-The size of the heat pump is the most important spec decision. Buy too small and the unit runsbackup electric all winter. Buy too big and the unit short-cycles, age compressor, and lose 10 to 15 percent of your spec sheet COP.
+The size of the heat pump is the most important spec decision. Buy too small and the unit runs backup electric all winter. Buy too big and the unit short-cycles, age compressor, and lose 10 to 15 percent of your spec sheet COP.
+
+![Heat pump sizing efficiency curve showing the sweet spot at 10 to 15 percent above Manual J design day](/diagrams/sizing-sweet-spot.svg) If you are still earlier in the decision, [types of heat pumps](/guide/types-of-heat-pumps/) and [do heat pumps work in cold climates](/guide/do-heat-pumps-work-in-cold-climates/) come first. If you have the type picked and need to know what it will cost, the [heat pump installation cost](/guide/heat-pump-installation-cost/) guide has the price ranges.
 
 The way to size a heat pump correctly is a room-by-room heat loss calculation. Most US cold-climate states require it by code now. Many homeowners skip it because the contractor skips it. Here is the process summarized and how to interpret what the contractor hands you.
 
@@ -76,7 +84,7 @@ Two ways to add standby backup heat.
 
 Resistive strip heat. Standard option. Most indoor air handlers can mount a 5 kW to 10 kW resistance strip. Five kW cover the coldest two hours of most moderate houses; ten kW is common in cold-climate installs. The strip kicks in only when the heat pump cannot carry the load on its own, typically 50 hours per winter in cold climates.
 
-Dual fuel. Standby backup is the existing gas furnace. The heat pump coil sits before the furnace heat exchanger in the ductwork. When the heat pump cannot carry the load, the furnace fires. The switchover is automatic either by outdoor temperature or inside temperature drop rate.
+Dual fuel. Standby backup is the existing gas furnace. The heat pump coil sits before the furnace heat exchanger in the ductwork. When the heat pump cannot carry the load, the furnace fires. The switchover is automatic either by outdoor temperature or inside temperature drop rate. The setup and the right switchover temperature get a full writeup in [dual-fuel heat pump setup](/guide/dual-fuel-heat-pump-setup/).
 
 ## How to read the installer's heat loss report
 
@@ -92,4 +100,4 @@ If the installer hands you a single number ("you need 3 tons"), ask for the room
 
 ## The simplest rule
 
-Whatever size a contractor quotes "from experience," run a Manual J with envelope data from real insulation measurements. If you insulate the attic and walls first, the heat loss drops 30 to 50 percent from "rule of thumb" guesswork. The right heat pump size is then half what the contractor originally quoted, and the install cost drops too. Insulate first, size second, install last.
+Whatever size a contractor quotes "from experience," run a Manual J with envelope data from real insulation measurements. If you insulate the attic and walls first, the heat loss drops 30 to 50 percent from "rule of thumb" guesswork. The right heat pump size is then half what the contractor originally quoted, and the install cost drops too. Insulate first, size second, install last. For the recurring checks that keep a right-sized unit running on spec, the [heat pump maintenance checklist](/guide/heat-pump-maintenance-checklist/) covers the annual routine.

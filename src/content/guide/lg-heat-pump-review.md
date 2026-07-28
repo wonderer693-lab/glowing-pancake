@@ -6,6 +6,20 @@ publishedAt: 2026-06-02
 modifiedAt: 2026-07-15
 schemaType: 'Review'
 brand: 'LG'
+model: 'Multi F / Multi F Red'
+rating: 3.8
+pros:
+  - 'Multi F Red is a credible cold-climate unit at moderate price points'
+  - 'Strong appliance-distributor stocking in Texas, Georgia, Pacific Northwest'
+  - 'Reasonable spec-sheet transparency on COP and capacity curves'
+  - 'LG backing reduces corporate-restructuring risk for warranty service'
+cons:
+  - 'Service network uneven in New England and the Midwest'
+  - 'Multi F (non-Red) is moderate-climate only and often mis-sold as cold-climate'
+  - 'Installer familiarity lags Mitsubishi and Daikin in cold North America'
+outbound:
+  - { label: 'LG Multi F Red product page', url: 'https://www.lghvac.com/multi-f-red' }
+  - { label: 'AHRI directory (verify model pairing)', url: 'https://www.ahridirectory.org/' }
 faqs:
   - q: 'Is the LG Multi F cold climate?'
     a: 'No. The Multi F line is moderate climate. The Red series, also marketed under Multi F Red branding, is LG''s cold-climate qualified variant. Check the model number, not the marketing.'

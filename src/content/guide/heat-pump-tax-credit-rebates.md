@@ -5,6 +5,10 @@ hub: 'cost'
 publishedAt: 2026-07-05
 modifiedAt: 2026-07-20
 schemaType: 'Article'
+outbound:
+  - { label: 'energystar.gov Federal Tax Credits', url: 'https://www.energystar.gov/about/federal_tax_credits' }
+  - { label: 'DOE home energy rebates page', url: 'https://www.energy.gov/eere/home-energy-rebates-programs' }
+  - { label: 'DSIRE database of state incentives', url: 'https://www.dsireusa.org/' }
 faqs:
   - q: 'Does the federal heat pump tax credit apply to rental property?'
     a: 'No. The section 25C credit applies only to the taxpayer''s primary residence. Rentals qualify potentially for state and utility rebates instead. Some state programs also exclude rentals.'

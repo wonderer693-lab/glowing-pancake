@@ -5,6 +5,8 @@ hub: 'cost'
 publishedAt: 2026-06-11
 modifiedAt: 2026-07-20
 schemaType: 'Article'
+image: '/diagrams/cost-by-state.svg'
+imageAlt: 'Bar chart of installed cost for a 3-ton cold-climate heat pump (Mitsubishi, Daikin Aurora, Bosch IDS) across five US regions: New England, Pacific NW, Mountain West, Texas, Southeast'
 faqs:
   - q: 'What is the federal tax credit for a heat pump in 2026?'
     a: 'Up to $2,000 income-tax credit under section 25C of the IRA, applied to the heat pump equipment and install labor. The credit is non-refundable, meaning it offsets tax you owe but does not pay out as cash.'
@@ -16,7 +18,9 @@ faqs:
 
 Total installed cost of a heat pump varies more by region than people realize. Sometimes the difference is double the price for the same hardware, depending on state. Sometimes the difference is in the rebates available after install.
 
-This page shows the honest total install cost for one specific configuration, plus the available rebates after the install. Use it as a baseline; get three quotes from local installers and compare.
+This page shows the honest total install cost for one specific configuration, plus the available rebates after the install. Use it as a baseline; get three quotes from local installers and compare. If you want the brand-by-brand verdicts that go with these numbers, the [best heat pumps for 2026](/guide/best-heat-pumps-2026/) guide walks through them in detail. If you have not sized the unit yet, run the [heat pump sizing calculator](/guide/heat-pump-sizing-calculator/) first.
+
+![Bar chart of installed heat pump cost by US state](/diagrams/cost-by-state.svg)
 
 ## The reference configuration
 
@@ -26,6 +30,8 @@ Equipment options fall in three tiers:
 - Mitsubishi MUZ-FS HyperHeat 36k multi-zone: $14,000 to $18,500 installed, before rebates
 - Daikin Aurora 36k cold-climate multi-zone: $13,500 to $17,000 installed
 - Bosch IDS 2.0 HVS 36k multi-zone: $10,500 to $13,500 installed
+
+The [Mitsubishi review](/guide/mitsubishi-heat-pump-review/) and [Daikin review](/guide/daikin-heat-pump-review/) break down why those two price tiers exist and where the cheaper brands give ground.
 
 Now by region.
 
@@ -71,7 +77,7 @@ Utah ThermWise and Idaho rebates vary by $200 to $1,000.
 
 For a cold-climate 3-ton multi-zone Mitsubishi HyperHeat install, total out-of-pocket for a middle-income homeowner should land somewhere between $8,500 and $14,500 in most US states as of mid 2026. The same for Daikin Aurora lands $7,500 to $12,000. For Bosch IDS HVS, net $6,000 to $9,500.
 
-The largest saving in selecting a unit comes from state rebate program cycles. If your state has a high rebate and your installers don't know it, you leave $1,500 to $10,000 on the table. Two hours of research on the state Efficiency Program page and you've captured the rebate without having paid it back through the installer.
+The largest saving in selecting a unit comes from state rebate program cycles. If your state has a high rebate and your installers don't know it, you leave $1,500 to $10,000 on the table. Two hours of research on the state Efficiency Program page and you've captured the rebate without having paid it back through the installer. The full rebate stack by program is in the [heat pump tax credits and rebates](/guide/heat-pump-tax-credit-rebates/) guide.
 
 ## Three lines to remember
 
@@ -79,4 +85,4 @@ The federal credit does not expire when the IRA bill goes away. Only the state p
 
 Some state programs count the install labor too. The federal credit only counts equipment. Add both up cleanly.
 
-A higher-priced installer may include the pre-install energy audit and grid-weather-risk walk, which sometimes uncover issues that would have caused a service call within six months. Costs climb differently across installers.
+A higher-priced installer may include the pre-install energy audit and grid-weather-risk walk, which sometimes uncover issues that would have caused a service call within six months. Costs climb differently across installers. For the loan products that let you spread the net cost, [heat pump financing options](/guide/heat-pump-financing-options/) covers the common ones.

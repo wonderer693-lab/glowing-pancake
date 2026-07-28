@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="ms-title ms-desc">
+  <title id="ms-title">Monoblock vs split heat pump layout</title>
+  <desc id="ms-desc">Side-by-side schematic showing a monoblock heat pump with all components in one outdoor unit, and a split heat pump with separate outdoor and indoor units connected by a refrigerant line-set.</desc>
+  <style>
+    .box { stroke: #1a1a1a; stroke-width: 1.5; fill: none; }
+    .fill { fill: #f3efe7; }
+    .accent { fill: #f6ece6; stroke: #b6431f; stroke-width: 1.5; }
+    .label { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 13px; fill: #1a1a1a; }
+    .small { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 11px; fill: #4a4a4a; }
+    .header { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 16px; font-weight: 700; fill: #1a1a1a; }
+    .arrow { stroke: #b6431f; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#b6431f" />
+    </marker>
+  </defs>
+
+  <rect width="720" height="420" fill="#fbfaf7" />
+
+  <!-- MONOBLOCK (left half: 0..360) -->
+  <text x="180" y="40" class="header" text-anchor="middle">Monoblock</text>
+
+  <!-- outdoor wall -->
+  <line x1="40"  y1="80" x2="40"  y2="370" class="box" />
+  <line x1="200" y1="80" x2="200" y2="370" class="box" stroke-dasharray="4 3" />
+
+  <!-- outdoor unit (large, includes everything) -->
+  <rect x="65" y="180" width="100" height="120" rx="6" class="accent" />
+  <line x1="65" y1="220" x2="165" y2="220" stroke="#b6431f" stroke-width="1" />
+  <text x="115" y="210" class="small" text-anchor="middle">Compressor</text>
+  <text x="115" y="245" class="small" text-anchor="middle">Expansion valve</text>
+  <text x="115" y="270" class="small" text-anchor="middle">Both coils</text>
+
+  <!-- line from outdoor to indoor (water lines only) -->
+  <line x1="165" y1="240" x2="220" y2="240" class="arrow" />
+  <text x="195" y="232" class="small" text-anchor="middle">water</text>
+
+  <!-- indoor: hydronic unit -->
+  <rect x="225" y="200" width="90" height="80" rx="6" class="fill box" />
+  <text x="270" y="235" class="small" text-anchor="middle">Hydronic</text>
+  <text x="270" y="252" class="small" text-anchor="middle">fan coil</text>
+  <text x="270" y="272" class="small" text-anchor="middle">or radiator</text>
+
+  <text x="180" y="120" class="label" text-anchor="middle">All refrigerant stays</text>
+  <text x="180" y="138" class="label" text-anchor="middle">inside the outdoor unit</text>
+  <text x="180" y="156" class="small" text-anchor="middle">No brazed joints inside the house</text>
+
+  <text x="180" y="390" class="small" text-anchor="middle" fill="#2c6e49">No refrigerant license needed indoors. DIY-friendlier.</text>
+
+  <!-- SPLIT (right half: 360..720) -->
+  <text x="540" y="40" class="header" text-anchor="middle">Split</text>
+
+  <line x1="400" y1="80" x2="400" y2="370" class="box" stroke-dasharray="4 3" />
+  <line x1="560" y1="80" x2="560" y2="370" class="box" />
+
+  <!-- outdoor unit (compressor + outdoor coil + expansion valve) -->
+  <rect x="410" y="160" width="100" height="160" rx="6" class="accent" />
+  <text x="460" y="190" class="small" text-anchor="middle">Compressor</text>
+  <text x="460" y="215" class="small" text-anchor="middle">Outdoor coil</text>
+  <text x="460" y="240" class="small" text-anchor="middle">Expansion</text>
+  <text x="460" y="258" class="small" text-anchor="middle">valve</text>
+
+  <!-- refrigerant line-set (two lines, insulated pair) -->
+  <path d="M 510 200 L 565 200 L 565 230 L 600 230" class="arrow" />
+  <path d="M 600 232 L 565 232 L 565 250 L 510 250" class="arrow" />
+  <text x="540" y="192" class="small" text-anchor="middle">refrigerant</text>
+  <text x="540" y="262" class="small" text-anchor="middle">line-set</text>
+
+  <!-- indoor unit (indoor coil + fan) -->
+  <rect x="600" y="190" width="100" height="100" rx="6" class="fill box" />
+  <text x="650" y="225" class="small" text-anchor="middle">Indoor coil</text>
+  <text x="650" y="248" class="small" text-anchor="middle">and fan</text>
+  <text x="650" y="270" class="small" text-anchor="middle">(wall / ducted)</text>
+
+  <text x="540" y="120" class="label" text-anchor="middle">Refrigerant travels</text>
+  <text x="540" y="138" class="label" text-anchor="middle">through the wall</text>
+
+  <text x="540" y="390" class="small" text-anchor="middle" fill="#9a6700">Brazed joints inside. Requires refrigerant handling for install and service.</text>
+</svg>

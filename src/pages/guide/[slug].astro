@@ -3,7 +3,8 @@ import { CollectionEntry, getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import Toc from "../../components/Toc.astro";
-import { SITE } from "../../consts";
+import ArticleCard from "../../components/ArticleCard.astro";
+import { SITE, HUBS } from "../../consts";
 
 export async function getStaticPaths() {
   const posts = await getCollection("guide", ({ data }) => !data.draft);
@@ -15,17 +16,28 @@ interface Props { post: CollectionEntry<"guide">; }
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
 const d = post.data;
+const url = `/guide/${post.slug}/`;
+const canonicalURL = new URL(url, SITE.url).toString();
+const imageURL = new URL(d.image, SITE.url).toString();
+const hubLabel = HUBS.find((h) => h.slug === d.hub)?.label ?? d.hub;
 
-const schema = {
+const authorRef = { "@type": "Person", name: SITE.author, url: `${SITE.url}/about/` };
+const publisherRef = {
+  "@type": "Organization",
+  name: SITE.name,
+  url: SITE.url,
+  logo: { "@type": "ImageObject", url: `${SITE.url}/og-default.svg` },
+};
+
+const breadcrumbSchema = {
   "@context": "https://schema.org",
-  "@type": d.schemaType,
-  headline: d.title,
-  description: d.description,
-  datePublished: d.publishedAt.toISOString(),
-  dateModified: (d.modifiedAt ?? d.publishedAt).toISOString(),
-  author: { "@type": "Person", name: SITE.author },
-  publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
-  inLanguage: SITE.lang,
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+    { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE.url}/#guides` },
+    { "@type": "ListItem", position: 3, name: hubLabel, item: `${SITE.url}/?hub=${d.hub}` },
+    { "@type": "ListItem", position: 4, name: d.title, item: canonicalURL },
+  ],
 };
 
 const faqSchema = d.faqs && d.faqs.length > 0 ? {
@@ -38,32 +50,120 @@ const faqSchema = d.faqs && d.faqs.length > 0 ? {
   })),
 } : null;
 
-const jsonLd = faqSchema ? [schema, faqSchema] : schema;
+let primarySchema: object;
+
+if (d.schemaType === "Review" && d.brand) {
+  primarySchema = {
+    "@context": "https://schema.org",
+    "@type": "Review",
+    headline: d.title,
+    description: d.description,
+    itemReviewed: {
+      "@type": "Product",
+      name: `${d.brand} ${d.model ?? ""}`.trim(),
+      brand: { "@type": "Brand", name: d.brand },
+      ...(d.model ? { model: d.model } : {}),
+      ...(d.priceFrom ? { offers: { "@type": "Offer", priceCurrency: "USD", price: d.priceFrom } } : {}),
+    },
+    ...(d.rating
+      ? { reviewRating: { "@type": "Rating", ratingValue: d.rating, bestRating: 5, worstRating: 0 } }
+      : {}),
+    ...(d.pros ? { positiveNotes: { "@type": "ItemList", itemListElement: d.pros.map((p) => ({ "@type": "ListItem", name: p })) } } : {}),
+    ...(d.cons ? { negativeNotes: { "@type": "ItemList", itemListElement: d.cons.map((c) => ({ "@type": "ListItem", name: c })) } } : {}),
+    author: authorRef,
+    publisher: publisherRef,
+    datePublished: d.publishedAt.toISOString(),
+    dateModified: (d.modifiedAt ?? d.publishedAt).toISOString(),
+    image: imageURL,
+    inLanguage: SITE.lang,
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalURL },
+  };
+} else if (d.schemaType === "HowTo") {
+  const steps = headings
+    .filter((h) => h.depth === 2 && /^\d+\./.test(h.text))
+    .map((h, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: h.text,
+      url: `${canonicalURL}#${h.slug}`,
+    }));
+  primarySchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    headline: d.title,
+    description: d.description,
+    author: authorRef,
+    publisher: publisherRef,
+    datePublished: d.publishedAt.toISOString(),
+    dateModified: (d.modifiedAt ?? d.publishedAt).toISOString(),
+    image: imageURL,
+    inLanguage: SITE.lang,
+    totalTime: "PT2H",
+    ...(steps.length > 0 ? { step: steps } : {}),
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalURL },
+  };
+} else {
+  primarySchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: d.title,
+    description: d.description,
+    author: authorRef,
+    publisher: publisherRef,
+    datePublished: d.publishedAt.toISOString(),
+    dateModified: (d.modifiedAt ?? d.publishedAt).toISOString(),
+    image: imageURL,
+    inLanguage: SITE.lang,
+    articleSection: hubLabel,
+    mainEntityOfPage: { "@type": "WebPage", "@id": canonicalURL },
+    isPartOf: { "@type": "WebSite", name: SITE.name, url: SITE.url },
+  };
+}
+
+const jsonLd: object[] = [primarySchema, breadcrumbSchema];
+if (faqSchema) jsonLd.push(faqSchema);
+
+const allPosts = await getCollection("guide", ({ data }) => !data.draft);
+const siblings = allPosts
+  .filter((p) => p.data.hub === d.hub && p.slug !== post.slug)
+  .slice(0, 4);
+const crossHub = allPosts
+  .filter((p) => p.data.hub !== d.hub && p.slug !== post.slug)
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .slice(0, 2);
+const related = [...siblings, ...crossHub];
 ---
 
 <BaseLayout
   title={d.title}
   description={d.description}
   type="article"
-  canonical={`/guide/${post.slug}/`}
+  canonical={url}
+  image={d.image}
   jsonLd={jsonLd}
   publishedAt={d.publishedAt.toISOString()}
   modifiedAt={(d.modifiedAt ?? d.publishedAt).toISOString()}
+  noindex={d.noindex}
 >
   <div class="wrap">
-    <Breadcrumbs crumbs={[{ label: d.hub[0].toUpperCase() + d.hub.slice(1) }, { label: d.title }]} />
+    <Breadcrumbs crumbs={[
+      { href: "/", label: "Home" },
+      { href: `/?hub=${d.hub}`, label: hubLabel },
+      { label: d.title },
+    ]} />
 
     <article class="post">
       <h1>{d.title}</h1>
       <p class="lede">{d.description}</p>
       <div class="meta">
-        By {SITE.author} · Updated {(d.modifiedAt ?? d.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long" })}
+        By <a href="/about/" rel="author">{SITE.author}</a> · Updated {(d.modifiedAt ?? d.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long" })}
         {d.region && <> · {d.region}</>}
       </div>
 
-      {d.brand && (
+      {d.schemaType === "Review" && d.rating && (
         <p class="meta">
           <span class="tag">{d.brand}</span>{d.model && <span class="tag">{d.model}</span>}
+          <strong>Verdict:</strong> {d.rating} / 5
         </p>
       )}
 
@@ -72,6 +172,37 @@ const jsonLd = faqSchema ? [schema, faqSchema] : schema;
       <div class="prose">
         <Content />
       </div>
+
+      {d.schemaType === "Review" && (d.pros || d.cons) && (
+        <section class="proscons" aria-label="Verdict summary">
+          <h2>Verdict summary</h2>
+          <div class="proscons-grid">
+            {d.pros && (
+              <div class="proscons-col pros">
+                <h3>Pros</h3>
+                <ul>{d.pros.map((p) => <li>{p}</li>)}</ul>
+              </div>
+            )}
+            {d.cons && (
+              <div class="proscons-col cons">
+                <h3>Cons</h3>
+                <ul>{d.cons.map((c) => <li>{c}</li>)}</ul>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      {d.outbound && d.outbound.length > 0 && (
+        <section class="outbound" aria-label="Authoritative sources">
+          <h2>Sources and further reading</h2>
+          <ul>
+            {d.outbound.map((o) => (
+              <li><a href={o.url} rel="external nofollow noopener" target="_blank">{o.label}</a></li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {d.faqs && d.faqs.length > 0 && (
         <section class="faq" aria-label="Frequently asked questions">
@@ -85,5 +216,21 @@ const jsonLd = faqSchema ? [schema, faqSchema] : schema;
         </section>
       )}
     </article>
+
+    {related.length > 0 && (
+      <section class="related" aria-label="Related guides">
+        <h2>Related guides</h2>
+        <div class="card-grid">
+          {related.map((p) => (
+            <ArticleCard
+              hub={HUBS.find((h) => h.slug === p.data.hub)?.label ?? p.data.hub}
+              title={p.data.title}
+              excerpt={p.data.description}
+              href={`/guide/${p.slug}/`}
+            />
+          ))}
+        </div>
+      </section>
+    )}
   </div>
 </BaseLayout>

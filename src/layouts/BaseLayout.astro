@@ -13,9 +13,10 @@ interface Props {
   jsonLd?: object | object[];
   publishedAt?: string;
   modifiedAt?: string;
+  noindex?: boolean;
 }
 
-const { title, description, type = "website", image, canonical, jsonLd, publishedAt, modifiedAt } = Astro.props;
+const { title, description, type = "website", image, canonical, jsonLd, publishedAt, modifiedAt, noindex = false } = Astro.props;
 
 const pageTitle = title === SITE.title ? title : `${title} — ${SITE.name}`;
 const canonicalURL = new URL(canonical ?? Astro.url.pathname, SITE.url);
@@ -28,6 +29,7 @@ const orgSchema = {
   name: SITE.name,
   url: SITE.url,
   description: SITE.description,
+  logo: `${SITE.url}/og-default.svg`,
 };
 
 const siteSchema = {
@@ -43,7 +45,19 @@ const siteSchema = {
   },
 };
 
-const schemas: object[] = [orgSchema, siteSchema];
+const authorSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: SITE.author,
+  jobTitle: SITE.authorJobTitle,
+  description: SITE.authorBio,
+  url: `${SITE.url}/about/`,
+  image: `${SITE.url}/og-default.svg`,
+  sameAs: SITE.authorSameAs,
+  worksFor: { "@type": "Organization", name: SITE.name, url: SITE.url },
+};
+
+const schemas: object[] = [orgSchema, siteSchema, authorSchema];
 if (jsonLd) Array.isArray(jsonLd) ? schemas.push(...jsonLd) : schemas.push(jsonLd);
 ---
 
@@ -57,7 +71,9 @@ if (jsonLd) Array.isArray(jsonLd) ? schemas.push(...jsonLd) : schemas.push(jsonL
   <link rel="canonical" href={canonicalURL} />
   <meta name="generator" content={Astro.generator} />
   <meta name="theme-color" content="#b6431f" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
+  {noindex
+    ? <meta name="robots" content="noindex,nofollow" />
+    : <meta name="robots" content="index,follow,max-image-preview:large" />}
 
   <meta property="og:type" content={type} />
   <meta property="og:site_name" content={SITE.name} />

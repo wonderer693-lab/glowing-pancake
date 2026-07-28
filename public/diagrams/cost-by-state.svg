@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 460" role="img" aria-labelledby="cost-title cost-desc">
+  <title id="cost-title">Installed cost of a 3-ton cold-climate heat pump by US region</title>
+  <desc id="cost-desc">Bar chart showing Mitsubishi, Daikin Aurora, and Bosch IDS installed cost ranges across five US regions: New England, Pacific Northwest, Mountain West, Texas, and Southeast.</desc>
+  <style>
+    .axis { stroke: #1a1a1a; stroke-width: 1; fill: none; }
+    .grid { stroke: #e6e1d8; stroke-width: 1; fill: none; }
+    .label { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 12px; fill: #4a4a4a; }
+    .axis-title { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 14px; font-weight: 600; fill: #1a1a1a; }
+    .region { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 12px; fill: #1a1a1a; }
+    .mitsu { fill: #b6431f; }
+    .daikin { fill: #9a6700; }
+    .bosch { fill: #2c6e49; }
+  </style>
+
+  <rect width="720" height="460" fill="#fbfaf7" />
+
+  <text x="360" y="32" class="axis-title" text-anchor="middle">Installed cost by region (3-ton cold-climate, USD, before rebates)</text>
+
+  <!-- Y axis: $0..$22k -->
+  <line x1="80" y1="60" x2="80" y2="380" class="axis" />
+  <line x1="80" y1="60"  x2="680" y2="60"  class="grid" />
+  <line x1="80" y1="133" x2="680" y2="133" class="grid" />
+  <line x1="80" y1="206" x2="680" y2="206" class="grid" />
+  <line x1="80" y1="279" x2="680" y2="279" class="grid" />
+  <line x1="80" y1="380" x2="680" y2="380" class="axis" />
+
+  <text x="72" y="64"  class="label" text-anchor="end">$22k</text>
+  <text x="72" y="137" class="label" text-anchor="end">$16k</text>
+  <text x="72" y="210" class="label" text-anchor="end">$11k</text>
+  <text x="72" y="283" class="label" text-anchor="end">$5k</text>
+  <text x="72" y="384" class="label" text-anchor="end">$0</text>
+  <text x="32" y="220" class="axis-title" transform="rotate(-90 32 220)" text-anchor="middle">Installed cost (USD)</text>
+
+  <!-- Bar groups for 5 regions, 3 bars each (high end of range) -->
+  <!-- Region x centers: 130, 260, 390, 520, 650 -->
+
+  <!-- New England -->
+  <rect x="100" y="84"  width="20" height="296" class="mitsu" />
+  <rect x="124" y="115" width="20" height="265" class="daikin" />
+  <rect x="148" y="155" width="20" height="225" class="bosch" />
+  <text x="134" y="402" class="region" text-anchor="middle">New England</text>
+
+  <!-- Pacific NW -->
+  <rect x="230" y="98"  width="20" height="282" class="mitsu" />
+  <rect x="254" y="130" width="20" height="250" class="daikin" />
+  <rect x="278" y="170" width="20" height="210" class="bosch" />
+  <text x="264" y="402" class="region" text-anchor="middle">Pacific NW</text>
+
+  <!-- Mountain West -->
+  <rect x="360" y="110" width="20" height="270" class="mitsu" />
+  <rect x="384" y="145" width="20" height="235" class="daikin" />
+  <rect x="408" y="185" width="20" height="195" class="bosch" />
+  <text x="394" y="402" class="region" text-anchor="middle">Mountain West</text>
+
+  <!-- Texas -->
+  <rect x="490" y="133" width="20" height="247" class="mitsu" />
+  <rect x="514" y="165" width="20" height="215" class="daikin" />
+  <rect x="538" y="205" width="20" height="175" class="bosch" />
+  <text x="524" y="402" class="region" text-anchor="middle">Texas</text>
+
+  <!-- Southeast -->
+  <rect x="620" y="120" width="20" height="260" class="mitsu" />
+  <rect x="644" y="152" width="20" height="228" class="daikin" />
+  <rect x="668" y="192" width="20" height="188" class="bosch" />
+  <text x="654" y="402" class="region" text-anchor="middle">Southeast</text>
+
+  <!-- Legend -->
+  <rect x="540" y="20" width="14" height="14" class="mitsu" />
+  <text x="558" y="32" class="label">Mitsubishi MUZ-FS</text>
+  <rect x="540" y="38" width="14" height="14" class="daikin" />
+  <text x="558" y="50" class="label">Daikin Aurora</text>
+  <rect x="540" y="56" width="14" height="14" class="bosch" />
+  <text x="558" y="68" class="label">Bosch IDS 2.0</text>
+
+  <text x="80" y="430" class="label" fill="#6f6f6f">Bars show top of installed-cost range per region. Net cost after federal + state rebates is roughly $1.5k to $3.5k lower for whole-house installs.</text>
+  <text x="80" y="448" class="label" fill="#6f6f6f">Lab rates reflect 2026 contractor pricing. Verify against local quotes.</text>
+</svg>

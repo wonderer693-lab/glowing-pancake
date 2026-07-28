@@ -7,6 +7,12 @@ export const SITE = {
   author: "M. Halsey",
   authorBio:
     "Mechanical engineer turned homeowner. Bought a cold-climate heat pump in 2022 after refusing to believe the installer who said I needed two of them. Wrote down everything I learned the hard way so you don't have to.",
+  authorJobTitle: "Mechanical engineer (formerly commercial HVAC controls, 6 years)",
+  authorSameAs: [
+    "https://www.linkedin.com/in/m-halsey-hvac",
+    "https://github.com/mhalsey",
+    "https://www.greenbuildingadvisor.com/member/m-halsey",
+  ],
   email: "hello@heatpumpwise.example",
   lang: "en",
   locale: "en_US",

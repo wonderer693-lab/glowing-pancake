@@ -134,3 +134,23 @@ th { background: #f3efe7; font-weight: 600; }
 
 .a404 { text-align: center; padding: 4rem 0; }
 .a404 h1 { font-size: 3rem; }
+
+.proscons { margin: 2.5rem 0; padding: 1.5rem; background: #f5f7f3; border: 1px solid var(--rule); border-radius: 8px; }
+.proscons h2 { margin-top: 0; }
+.proscons-grid { display: grid; gap: 1.5rem; grid-template-columns: 1fr; }
+@media (min-width: 700px) { .proscons-grid { grid-template-columns: 1fr 1fr; } }
+.proscons-col h3 { margin-top: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.proscons-col.pros h3 { color: var(--ok); }
+.proscons-col.cons h3 { color: var(--accent); }
+.proscons-col ul { margin: 0.4rem 0; padding-left: 1.2rem; }
+.proscons-col li + li { margin-top: 0.4rem; font-size: 0.95rem; }
+
+.outbound { margin: 2.5rem 0; }
+.outbound h2 { margin-top: 0; font-size: 1.2rem; }
+.outbound ul { margin: 0.6rem 0; padding-left: 1.2rem; }
+.outbound li + li { margin-top: 0.35rem; font-size: 0.95rem; }
+
+.related { max-width: var(--maxw-wide); margin: 3.5rem auto 2rem; }
+.related h2 { font-size: 1.35rem; margin-bottom: 1rem; }
+
+article.post .meta a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; }

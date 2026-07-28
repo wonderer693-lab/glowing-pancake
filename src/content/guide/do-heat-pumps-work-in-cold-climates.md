@@ -5,6 +5,10 @@ hub: 'basics'
 publishedAt: 2026-02-22
 modifiedAt: 2026-07-15
 schemaType: 'Article'
+outbound:
+  - { label: 'AHRI directory (verify cold-climate certification)', url: 'https://www.ahridirectory.org/' }
+  - { label: 'ENERGY STAR cold-climate heat pump specification', url: 'https://www.energystar.gov/productfinder/product/certified-ashp' }
+  - { label: 'NEEP cold-climate heat pump list', url: 'https://neep.org/heating/ccashp/cold-climate-air-source-heat-pump-list' }
 faqs:
   - q: 'What outdoor temperature can a cold-climate heat pump handle?'
     a: 'A genuine cold-climate unit is rated to deliver at least 70% of rated heating capacity at -15C, and to keep running down to -25C. The standard required by AHRI cold-climate certification covers tests at -5C and -15C.'

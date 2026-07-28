@@ -5,6 +5,8 @@ hub: 'basics'
 publishedAt: 2026-03-09
 modifiedAt: 2026-06-25
 schemaType: 'Article'
+image: '/diagrams/monoblock-vs-split.svg'
+imageAlt: 'Side-by-side schematic of a monoblock heat pump with all components in the outdoor unit, and a split heat pump with separate outdoor and indoor units joined by a refrigerant line-set'
 faqs:
   - q: 'What is the difference between a mini-split and a split system?'
     a: 'A mini-split is a split system with one or more indoor heads mounted on the wall or ceiling, without ductwork. A split system with ductwork has an indoor air handler that pushes conditioned air through ducts throughout the house.'
@@ -17,6 +19,8 @@ faqs:
 The marketing blur. "Heat pump" gets used to describe six different kinds of equipment. The actual choices are different in cost, install, and which houses they fit. Sort them once.
 
 ## Air-source split system
+
+![Side-by-side diagram of a monoblock heat pump and a split heat pump, with the refrigerant line-set highlighted in the split version](/diagrams/monoblock-vs-split.svg)
 
 The most common residential install in 2026. Outdoor condenser box. Indoor air handler or one or more wall-mounted heads. Refrigerant lines between them.
 
