@@ -1,0 +1,9 @@
+---
+interface Props { hub: string; title: string; excerpt?: string; href: string; }
+const { hub, title, excerpt = "", href } = Astro.props;
+---
+<a class="card" href={href}>
+  <div class="hub-label">{hub}</div>
+  <h3>{title}</h3>
+  {excerpt && <p>{excerpt}</p>}
+</a>

@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../consts";
+---
+<BaseLayout title="Contact" description="Reach the writer behind Heat Pump Wise.">
+  <div class="wrap">
+    <article class="post">
+      <h1>Contact</h1>
+      <p>Email is the only channel that works. I do not run socials under this name.</p>
+      <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+      <p>I read all of it. I answer questions from homeowners first, installers second, and pitches from manufacturers last. Pitch emails offering "guest posts" get dropped in the bin.</p>
+      <p>If you spot a factual error in a guide, please tell me the page and the line. I will fix it and credit you in the page notes unless you ask me not to.</p>
+    </article>
+  </div>
+</BaseLayout>

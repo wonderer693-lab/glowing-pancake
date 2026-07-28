@@ -1,0 +1,23 @@
+---
+import { NAV } from "../consts";
+const path = Astro.url.pathname.replace(/\/$/, "") + "/";
+const isActive = (href: string) => {
+  const h = href.replace(/\/$/, "") + "/";
+  if (href === "/") return path === "/" ;
+  return path.startsWith(h);
+};
+---
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="pi">Heat</span> Pump Wise</a>
+    <nav class="primary" aria-label="Primary">
+      <ul>
+        {NAV.map((item) => (
+          <li>
+            <a href={item.href} class={isActive(item.href) ? "active" : ""}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>

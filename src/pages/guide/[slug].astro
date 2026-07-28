@@ -1,0 +1,89 @@
+---
+import { CollectionEntry, getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import Toc from "../../components/Toc.astro";
+import { SITE } from "../../consts";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("guide", ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+interface Props { post: CollectionEntry<"guide">; }
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const d = post.data;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": d.schemaType,
+  headline: d.title,
+  description: d.description,
+  datePublished: d.publishedAt.toISOString(),
+  dateModified: (d.modifiedAt ?? d.publishedAt).toISOString(),
+  author: { "@type": "Person", name: SITE.author },
+  publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+  inLanguage: SITE.lang,
+};
+
+const faqSchema = d.faqs && d.faqs.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: d.faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+} : null;
+
+const jsonLd = faqSchema ? [schema, faqSchema] : schema;
+---
+
+<BaseLayout
+  title={d.title}
+  description={d.description}
+  type="article"
+  canonical={`/guide/${post.slug}/`}
+  jsonLd={jsonLd}
+  publishedAt={d.publishedAt.toISOString()}
+  modifiedAt={(d.modifiedAt ?? d.publishedAt).toISOString()}
+>
+  <div class="wrap">
+    <Breadcrumbs crumbs={[{ label: d.hub[0].toUpperCase() + d.hub.slice(1) }, { label: d.title }]} />
+
+    <article class="post">
+      <h1>{d.title}</h1>
+      <p class="lede">{d.description}</p>
+      <div class="meta">
+        By {SITE.author} · Updated {(d.modifiedAt ?? d.publishedAt).toLocaleDateString("en-US", { year: "numeric", month: "long" })}
+        {d.region && <> · {d.region}</>}
+      </div>
+
+      {d.brand && (
+        <p class="meta">
+          <span class="tag">{d.brand}</span>{d.model && <span class="tag">{d.model}</span>}
+        </p>
+      )}
+
+      <Toc headings={headings} />
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      {d.faqs && d.faqs.length > 0 && (
+        <section class="faq" aria-label="Frequently asked questions">
+          <h2>Field questions</h2>
+          {d.faqs.map((f) => (
+            <details>
+              <summary>{f.q}</summary>
+              <div class="answer"><p>{f.a}</p></div>
+            </details>
+          ))}
+        </section>
+      )}
+    </article>
+  </div>
+</BaseLayout>

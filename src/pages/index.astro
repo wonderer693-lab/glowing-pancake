@@ -1,0 +1,43 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import { SITE, HUBS } from "../consts";
+
+const posts = (await getCollection("guide", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+);
+
+const featured = posts.find((p) => p.slug === "best-heat-pumps-2026") ?? posts[0];
+const rest = posts.filter((p) => p.slug !== featured?.slug);
+---
+<BaseLayout title={SITE.title} description={SITE.description}>
+  <section class="hero wrap">
+    <h1>Plain talk for homeowners before they spend $20k on a heat pump.</h1>
+    <p class="lede">
+      Independent guides to buying, sizing, and living with a heat pump. Real prices, real model numbers, real cold-climate gotchas. No vendor scripts.
+    </p>
+    <a class="cta" href={`/guide/${featured.slug}/`}>Start with the 2026 picks</a>
+  </section>
+
+  {HUBS.map((hub) => {
+    const items = rest.filter((p) => p.data.hub === hub.slug);
+    if (items.length === 0) return null;
+    return (
+      <section class="hub-section wrap">
+        <h2>{hub.label}</h2>
+        <p class="hub-blurb">{hub.blurb}</p>
+        <div class="card-grid">
+          {items.map((p) => (
+            <ArticleCard
+              hub={hub.label}
+              title={p.data.title}
+              excerpt={p.data.description}
+              href={`/guide/${p.slug}/`}
+            />
+          ))}
+        </div>
+      </section>
+    );
+  })}
+</BaseLayout>

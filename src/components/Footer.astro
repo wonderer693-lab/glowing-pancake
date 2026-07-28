@@ -1,0 +1,36 @@
+---
+import { SITE, HUBS, NAV } from "../consts";
+const year = new Date().getFullYear();
+---
+<footer class="site">
+  <div class="wrap cols">
+    <div>
+      <p><strong>{SITE.name}</strong></p>
+      <p>{SITE.description}</p>
+      <p style="color:var(--ink-muted); font-size: 0.85rem; margin-top:1rem;">
+        Independent. We take some affiliate commissions from retailers, never from manufacturers. Read the <a href="/affiliate-disclosure/">disclosure</a>.
+      </p>
+    </div>
+    <div>
+      <p style="margin:0 0 0.4rem; font-weight:600;">Hubs</p>
+      <ul>
+        <li><a href="/guide/what-is-a-heat-pump/">Basics</a></li>
+        <li><a href="/guide/best-heat-pumps-2026/">Buying</a></li>
+        <li><a href="/guide/heat-pump-cost-by-state/">Cost</a></li>
+        <li><a href="/guide/heat-pump-sizing-calculator/">Install</a></li>
+      </ul>
+    </div>
+    <div>
+      <p style="margin:0 0 0.4rem; font-weight:600;">Site</p>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/rss.xml">RSS</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top: 1.5rem; color: var(--ink-muted); font-size: 0.85rem;">
+    &copy; {year} {SITE.name}. Written by one person, edited by one person, mistakes are mine.
+  </div>
+</footer>

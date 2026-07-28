@@ -1,0 +1,91 @@
+---
+import { SITE } from "../consts";
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  type?: "website" | "article";
+  image?: string;
+  canonical?: string;
+  jsonLd?: object | object[];
+  publishedAt?: string;
+  modifiedAt?: string;
+}
+
+const { title, description, type = "website", image, canonical, jsonLd, publishedAt, modifiedAt } = Astro.props;
+
+const pageTitle = title === SITE.title ? title : `${title} — ${SITE.name}`;
+const canonicalURL = new URL(canonical ?? Astro.url.pathname, SITE.url);
+const ogImage = image ?? "/og-default.svg";
+const fullOG = new URL(ogImage, SITE.url).toString();
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+};
+
+const siteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE.name,
+  url: SITE.url,
+  inLanguage: SITE.lang,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${SITE.url}/?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const schemas: object[] = [orgSchema, siteSchema];
+if (jsonLd) Array.isArray(jsonLd) ? schemas.push(...jsonLd) : schemas.push(jsonLd);
+---
+
+<!doctype html>
+<html lang={SITE.lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+  <meta name="generator" content={Astro.generator} />
+  <meta name="theme-color" content="#b6431f" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+
+  <meta property="og:type" content={type} />
+  <meta property="og:site_name" content={SITE.name} />
+  <meta property="og:locale" content={SITE.locale} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:image" content={fullOG} />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={pageTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={fullOG} />
+
+  {publishedAt && <meta property="article:published_time" content={publishedAt} />}
+  {modifiedAt && <meta property="article:modified_time" content={modifiedAt} />}
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate" type="application/rss+xml" title={SITE.name} href="/rss.xml" />
+
+  {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <Header />
+  <main id="main">
+    <slot />
+  </main>
+  <Footer />
+</body>
+</html>
